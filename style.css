@@ -1,0 +1,249 @@
+/* =========================================================
+   CZŁOWIEK DROGI — wygląd strony
+   Kolory zmieniasz w jednym miejscu: sekcja :root poniżej.
+   ========================================================= */
+
+:root {
+  --las: #2f4a3a;          /* zieleń lasu — przyciski, nagłówki */
+  --las-ciemny: #22382b;   /* przycisk po najechaniu */
+  --mech: #5d7a63;         /* jaśniejsza zieleń — akcenty */
+  --ziemia: #7a5a3c;       /* brąz ziemi — drobne akcenty */
+  --len: #f4efe6;          /* len — tło strony */
+  --len-ciemny: #e9e1d3;   /* tło co drugiej sekcji */
+  --papier: #fbf9f5;       /* tło kart */
+  --tekst: #232a25;        /* główny kolor tekstu */
+  --tekst-cichy: #4f5a52;  /* tekst pomocniczy */
+  --linia: #d6ccbb;
+
+  --szer: 68rem;           /* maks. szerokość treści */
+  --szer-tekst: 40rem;     /* maks. szerokość akapitu */
+  --promien: 14px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--len);
+  color: var(--tekst);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;      /* 18 px */
+  line-height: 1.65;
+}
+@media (min-width: 48rem) { body { font-size: 1.1875rem; } } /* 19 px */
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--las);
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2rem, 6vw, 3.1rem); margin: 0 0 1.25rem; }
+h2 { font-size: clamp(1.65rem, 4.5vw, 2.3rem); margin: 0 0 1.5rem; }
+h3 { font-size: 1.35rem; margin: 0 0 .5rem; }
+p  { margin: 0 0 1rem; max-width: var(--szer-tekst); }
+
+a { color: var(--las); text-underline-offset: .18em; }
+a:hover { color: var(--las-ciemny); }
+
+:focus-visible { outline: 3px solid var(--ziemia); outline-offset: 3px; border-radius: 4px; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Link „przejdź do treści” dla klawiatury */
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--las); color: #fff; padding: .75rem 1rem; z-index: 10;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Układ sekcji ---------- */
+.wrap { max-width: var(--szer); margin: 0 auto; padding: 0 1.25rem; }
+section { padding: 4rem 0; }
+@media (min-width: 48rem) { section { padding: 6rem 0; } }
+.tlo-ciemne { background: var(--len-ciemny); }
+
+/* ---------- Przyciski ---------- */
+.btn {
+  display: inline-block;
+  background: var(--las);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  min-height: 48px;
+  line-height: 1.3;
+  text-align: center;
+  transition: background .2s;
+}
+.btn:hover { background: var(--las-ciemny); color: #fff; }
+.btn-jasny {
+  background: transparent; color: var(--las);
+  border: 2px solid var(--las);
+}
+.btn-jasny:hover { background: var(--las); color: #fff; }
+.cta { margin-top: 2rem; }
+.cta-pod { font-size: .95rem; color: var(--tekst-cichy); margin-top: .75rem; }
+
+/* ---------- Nagłówek strony (logo) ---------- */
+.gora { padding: 1.25rem 0; }
+.logo {
+  font-family: Georgia, serif; font-size: 1.25rem;
+  color: var(--las); text-decoration: none; letter-spacing: .02em;
+}
+
+/* ---------- 1. Hero ---------- */
+.hero { padding-top: 1rem; }
+.hero .wrap { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 56rem) { .hero .wrap { grid-template-columns: 1.1fr 1fr; gap: 4rem; } }
+.etykieta {
+  font-size: .9rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ziemia); margin-bottom: 1rem;
+}
+.podtytul { font-size: 1.15em; color: var(--tekst-cichy); }
+
+/* ---------- Miejsca na zdjęcia (do czasu wstawienia prawdziwych) ---------- */
+.foto-zastepcze {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--promien);
+  background:
+    linear-gradient(160deg, rgba(47,74,58,.10), rgba(47,74,58,.35)),
+    repeating-linear-gradient(95deg, #c9c2ae 0 2px, transparent 2px 38px),
+    #d8d2c0;
+  display: flex; align-items: flex-end;
+  padding: 1.25rem;
+  color: var(--las-ciemny);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.foto-zastepcze span { background: rgba(251,249,245,.88); padding: .6rem .8rem; border-radius: 8px; }
+.foto { border-radius: var(--promien); object-fit: cover; width: 100%; }
+
+/* ---------- 2. Czy to o Tobie ---------- */
+.cytaty { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; max-width: 46rem; }
+.cytaty li {
+  background: var(--papier);
+  border-left: 4px solid var(--mech);
+  padding: 1.1rem 1.25rem;
+  border-radius: 0 var(--promien) var(--promien) 0;
+  font-family: Georgia, serif; font-size: 1.1em;
+}
+
+/* ---------- 3. Moja droga ---------- */
+.droga { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 56rem) { .droga { grid-template-columns: 1fr 1.3fr; gap: 4rem; } }
+.liczby { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin: 1.5rem 0 2rem; padding: 0; list-style: none; }
+.liczby strong { display: block; font-family: Georgia, serif; font-size: 2rem; color: var(--las); font-weight: 400; line-height: 1.1; }
+.liczby span { font-size: .95rem; color: var(--tekst-cichy); }
+.podpis-foto { font-size: .9rem; color: var(--tekst-cichy); margin-top: .5rem; }
+
+/* ---------- 4. Jak pracuję ---------- */
+.trzy { display: grid; gap: 1.25rem; margin: 2rem 0; }
+@media (min-width: 48rem) { .trzy { grid-template-columns: repeat(3, 1fr); } }
+.trzy div { background: var(--papier); border-radius: var(--promien); padding: 1.5rem; }
+.trzy p { margin: 0; }
+.zasady { padding-left: 1.2rem; max-width: var(--szer-tekst); }
+.zasady li { margin-bottom: .4rem; }
+.ramka {
+  border: 1px solid var(--linia); border-radius: var(--promien);
+  padding: 1.25rem 1.5rem; max-width: 46rem; margin-top: 2rem;
+  background: var(--papier);
+}
+.ramka p:last-child { margin-bottom: 0; }
+
+/* ---------- 5. Karty ---------- */
+.kiedy { margin-bottom: 2rem; }
+.karty { display: grid; gap: 1.5rem; }
+@media (min-width: 56rem) { .karty { grid-template-columns: 1fr 1fr; } }
+.karta {
+  background: var(--papier); border-radius: var(--promien);
+  padding: 1.75rem 1.5rem; border: 1px solid var(--linia);
+}
+.cena { font-size: 1.25rem; font-weight: 600; color: var(--ziemia); margin: 0 0 1rem; }
+.karta ul { padding-left: 1.2rem; margin: 1rem 0 0; }
+.karta li { margin-bottom: .6rem; }
+.pakiet {
+  margin-top: 1.5rem; padding: 1.5rem; border-radius: var(--promien);
+  background: var(--las); color: #f4efe6;
+}
+.pakiet h3 { color: #fff; }
+.pakiet p { margin-bottom: .4rem; }
+.pakiet .cena { color: #e8d6b8; }
+
+/* ---------- 6. Kroki ---------- */
+.kroki { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; counter-reset: krok; }
+@media (min-width: 56rem) { .kroki { grid-template-columns: repeat(3, 1fr); } }
+.kroki li { counter-increment: krok; position: relative; padding-top: 3.5rem; }
+.kroki li::before {
+  content: counter(krok);
+  position: absolute; top: 0; left: 0;
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 2px solid var(--mech); color: var(--las);
+  font-family: Georgia, serif; font-size: 1.3rem;
+  display: grid; place-items: center;
+}
+
+/* ---------- 7. Opinie ----------
+   Sekcja jest ukryta, dopóki w HTML nie ma co najmniej 2 opinii.
+   Działa samo — bez JavaScriptu. */
+.opinie { display: none; }
+.opinie:has(.opinia ~ .opinia) { display: block; }
+.opinie-lista { display: grid; gap: 1.5rem; }
+@media (min-width: 56rem) { .opinie-lista { grid-template-columns: repeat(2, 1fr); } }
+.opinia { margin: 0; background: var(--papier); border-radius: var(--promien); padding: 1.5rem; }
+.opinia p { font-family: Georgia, serif; font-size: 1.1em; }
+.opinia footer { color: var(--tekst-cichy); font-size: .95rem; }
+
+/* ---------- 8. FAQ ---------- */
+.faq { max-width: 46rem; }
+.faq details { border-bottom: 1px solid var(--linia); }
+.faq summary {
+  cursor: pointer; list-style: none;
+  padding: 1.1rem 2.5rem 1.1rem 0; position: relative;
+  font-weight: 600; color: var(--las);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: .25rem; top: .9rem;
+  font-size: 1.5rem; font-weight: 400; color: var(--mech);
+}
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding-bottom: .5rem; }
+
+/* ---------- 9. Umów ---------- */
+.kalendarz {
+  background: var(--papier); border-radius: var(--promien);
+  border: 2px dashed var(--mech); padding: 2rem 1.5rem; margin: 2rem 0;
+  min-height: 12rem;
+}
+.kalendarz-embed { min-height: 34rem; }
+.kontakt { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: grid; gap: .75rem; }
+.kontakt a { font-weight: 600; }
+.etykieta-kontakt { display: inline-block; min-width: 5.5rem; color: var(--tekst-cichy); }
+.btn-wa { display: inline-flex; align-items: center; gap: .6rem; }
+.btn-wa svg { width: 1.3em; height: 1.3em; flex: none; }
+
+/* ---------- 10. Stopka ---------- */
+.stopka { background: var(--las-ciemny); color: #e7e2d7; padding: 3rem 0 2.5rem; font-size: 1rem; }
+.stopka a { color: #fff; }
+.kryzys {
+  border: 1px solid rgba(255,255,255,.25); border-radius: var(--promien);
+  padding: 1.25rem 1.5rem; margin-bottom: 2rem; max-width: 46rem;
+}
+.kryzys p { margin: 0; }
+.kryzys a { white-space: nowrap; }
+.stopka-dol { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: #c8c2b5; }
+
+/* ---------- Podstrona: polityka prywatności ---------- */
+.dokument { padding: 2rem 0 4rem; }
+.dokument h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+.dokument h2 { font-size: 1.4rem; margin: 2.5rem 0 .75rem; }
+.dokument ul { max-width: var(--szer-tekst); padding-left: 1.2rem; }
+.dokument li { margin-bottom: .5rem; }
