@@ -94,6 +94,16 @@ section { padding: 4rem 0; }
 
 /* ---------- Nagłówek strony (logo) ---------- */
 .gora { padding: 1.25rem 0; }
+.logo-osoba { display: inline-flex; align-items: center; gap: .75rem; }
+.logo-osoba img {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--papier); box-shadow: 0 0 0 1px var(--linia);
+}
+.logo-osoba > span { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-nazwa { font-size: 1.25rem; }
+.logo-podpis { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: .85rem; color: var(--tekst-cichy); letter-spacing: .02em; }
+.logo-osoba:hover .logo-podpis { color: var(--las); text-decoration: underline; }
+#moja-droga { scroll-margin-top: 1rem; }
 .logo {
   font-family: Georgia, serif; font-size: 1.25rem;
   color: var(--las); text-decoration: none; letter-spacing: .02em;
