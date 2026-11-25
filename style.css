@@ -238,6 +238,8 @@ section { padding: 4rem 0; }
 .kontakt a { font-weight: 600; }
 .etykieta-kontakt { display: inline-block; min-width: 5.5rem; color: var(--tekst-cichy); }
 .btn-wa { display: inline-flex; align-items: center; gap: .6rem; }
+.przyciski-kontakt { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.5rem 0; }
+.btn-wa { justify-content: center; }
 .btn-wa svg { width: 1.3em; height: 1.3em; flex: none; }
 
 /* ---------- 10. Stopka ---------- */
